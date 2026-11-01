@@ -14,3 +14,6 @@ npx skills@latest add mattpocock/skills --skill=<name>
 - **[writing-shape](./writing-shape/SKILL.md)**: Take a markdown file of raw material and shape it into an article paragraph by paragraph, arguing format choices at each step.
 - **[claude-handoff](./claude-handoff/SKILL.md)**: Save a conversation handoff; launch a Claude background agent only on explicit user request. User-invoked.
 - **[setup-ts-deep-modules](./setup-ts-deep-modules/SKILL.md)**: Wire dependency-cruiser into a TypeScript repo so each package is a deep module: implementation hidden in subfolders, reachable only through its entry-point files, tests exercising it through those. User-invoked.
+
+- **[chief-of-staff](./chief-of-staff/SKILL.md)**: Advance an agreed long-running objective in the current agent and maintain shared, source-backed memory. User-invoked.
+- **[software-factory](./software-factory/SKILL.md)**: Design automated tasks and the tracker, git host, orchestrator, runner and observability services they use. User-invoked.

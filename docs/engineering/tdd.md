@@ -4,6 +4,8 @@
 
 It tests at public seams established by the spec, conversation or existing interface tests. An unresolved interface decision needs your input; an already agreed seam needs no repeated confirmation. `tdd` remains a reference for the red → green loop, driven by you or [implement](https://aihero.dev/skills-implement).
 
+When a new test seam is proposed, its explanation includes what the seam catches and what it misses. This makes the coverage decision visible without requiring you to reconfirm seams already agreed in the spec or conversation.
+
 ## When to reach for it
 
 Type `/tdd`, or the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) reaches for it automatically when a task fits: building a feature or fixing a bug test-first, or when you say "red-green-refactor".

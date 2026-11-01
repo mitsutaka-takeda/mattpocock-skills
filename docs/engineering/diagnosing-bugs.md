@@ -4,6 +4,8 @@
 
 It reuses evidence already available, including prior triage results, and scales investigation to what remains uncertain. A diagnosis-only request ends with findings and their limits. A fix request continues through the relevant verification and cleanup.
 
+When a regression test is forced red by changing code or a fixture, compare that change against a pristine copy before trusting the failure. This catches attempted mutations that silently left the input unchanged.
+
 ## When to reach for it
 
 Type `/diagnosing-bugs`, or the agent reaches for it automatically when the task involves a hard-to-reproduce bug or performance regression.

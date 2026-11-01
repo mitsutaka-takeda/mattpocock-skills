@@ -10,7 +10,7 @@ Two-axis review of the changes the user asks to assess:
 
 Use one agent by default: review Standards, then Spec, keeping separate notes and findings. Use sub-agents only when the user explicitly requests delegation or multi-agent work for this task. Invoking this skill alone is not a request for delegation. A delegated reviewer performs its assigned pass directly without spawning further agents.
 
-Use `docs/agents/issue-tracker.md` when available to locate linked issues. A supplied spec, local file, or conversation can provide the requirements without tracker setup.
+Use the supplied tracker instructions, or `docs/agents/issue-tracker.md` when available, to locate linked issues. A supplied spec, local file, or conversation can provide the requirements without tracker setup.
 
 ## Process
 
@@ -34,7 +34,7 @@ Ask only when the source is still missing or sources materially conflict. Contin
 
 ### 3. Identify the standards sources
 
-Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`.
+Search the repo for every file that documents how code should be written. When `CODING_STANDARDS.md` or `CONTRIBUTING.md` exists, it must be on the list.
 
 On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
 
@@ -65,7 +65,7 @@ Read the selected diff, any in-scope untracked files and the applicable commit l
 
 Keep each pass concise, normally under 400 words, while retaining evidence needed to assess each finding. A clean pass is a valid result; do not manufacture findings to fill a quota.
 
-If the user explicitly requests parallel reviewers, assign one pass to each of at most two sub-agents. Supply the resolved review scope, diff or snapshot, applicable commit list, relevant source paths and pass criteria. Each reviewer reads only what its pass needs and reports directly; it must not invoke this skill recursively or delegate further. If delegation is unavailable, perform both passes yourself and disclose that they were not independently reviewed.
+If the user explicitly requests parallel reviewers, assign one pass to each of at most two sub-agents, each starting with a fresh context window rather than inheriting this conversation. Supply the resolved review scope, diff or snapshot, applicable commit list, relevant source paths and pass criteria. Include every standards source found in step 3 in the Standards brief. Issue both calls together in the foreground, wait for their returned reports, and aggregate those reports. Each reviewer reads only what its pass needs and reports directly; it must not invoke this skill recursively or delegate further. If delegation is unavailable, perform both passes yourself and disclose that they were not independently reviewed.
 
 ### 5. Aggregate
 

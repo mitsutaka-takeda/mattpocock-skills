@@ -4,6 +4,8 @@
 
 The two axes are never merged and never re-ranked. The report ends with a worst issue *per axis* and refuses to name a single winner across them, because a change can pass one axis and fail the other: code that follows every convention while implementing the wrong thing passes Standards and fails Spec; code that does exactly what the [ticket](https://www.aihero.dev/ai-coding-dictionary/ticket) asked while breaking the repo's conventions does the reverse. A blended verdict lets the passing axis hide the failing one.
 
+Search the whole repository for applicable standards, always including CODING_STANDARDS.md and CONTRIBUTING.md when present. Supplied tracker instructions take precedence over the conventional tracker path. If you request parallel review, each reviewer starts fresh with its assigned sources, and the two returned reports are collected before the findings are presented.
+
 ## When to reach for it
 
 Type `/code-review`, or the agent reaches for it automatically when you ask to review a branch, a PR, work in progress, or anything "since X".

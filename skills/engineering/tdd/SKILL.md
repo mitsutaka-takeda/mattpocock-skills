@@ -21,6 +21,8 @@ A **seam** is the public boundary you test at: the interface where you observe b
 
 **Test at agreed public seams.** Reuse seams established by the spec, the conversation, or the existing public interface tests. State which seam the next test covers. Ask the user only when choosing or changing an interface would require an unresolved design decision; prior agreement does not need reconfirmation on each cycle.
 
+When proposing a new seam, give a one-line note on what it catches and what it misses.
+
 Keep the red → green loop scoped to the requested behaviour and its meaningful failure cases.
 
 When the shape of that interface is itself in question (how deep the module is, where the seam belongs, what the interface should expose), call the Skill tool with "codebase-design" for the vocabulary. It is the shared source of the module, interface, depth, seam, adapter, leverage and locality terms, and it is a reference to consult, not a session to run.
