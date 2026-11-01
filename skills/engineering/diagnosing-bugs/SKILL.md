@@ -7,7 +7,7 @@ description: "Diagnose hard-to-reproduce bugs and performance regressions with a
 
 Diagnose a specific hard bug using a **tight feedback loop**: a repeatable observation that distinguishes the reported failure from correct behaviour. Start with the evidence already available, including prior triage results. Scale the investigation to what remains uncertain.
 
-Use the relevant `CONTEXT.md` for domain terms and ADRs when a hypothesis or fix touches a recorded decision. Keep credentials in environment variables; redact commands, output and captured artifacts before sharing them. Quote only the lines needed to explain the evidence.
+Use the relevant `GLOSSARY.md` for domain terms and ADRs when a hypothesis or fix touches a recorded decision. Keep credentials in environment variables; redact commands, output and captured artifacts before sharing them. Quote only the lines needed to explain the evidence.
 
 ## Establish the signal
 

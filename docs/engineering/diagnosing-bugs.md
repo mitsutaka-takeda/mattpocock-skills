@@ -16,6 +16,7 @@ Type `/diagnosing-bugs`, or the agent reaches for it automatically when the task
 | A proactive search for bottlenecks without a reported regression | A separately scoped performance review |
 | A raw incoming report that needs categorisation | [triage](https://aihero.dev/skills-triage) |
 | An unresolved design question | [prototype](https://aihero.dev/skills-prototype) |
+| What would have prevented the bug, after it is fixed | [retro](https://aihero.dev/skills-retro), invoked by you |
 
 ## The tight loop
 
@@ -62,4 +63,4 @@ It was renamed to `/diagnosing-bugs` in v1.0.0. Update saved prompts or wrappers
 
 ## Where it fits
 
-`diagnosing-bugs` is a standalone investigation with no tracker setup requirement. [triage](https://aihero.dev/skills-triage) can supply the initial report and evidence. If the investigation reveals a missing test seam, [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) is possible follow-up work; it does not expand the bug fix automatically. [ask-matt](https://aihero.dev/skills-ask-matt) maps the wider flows.
+`diagnosing-bugs` is a standalone investigation with no tracker setup requirement. [triage](https://aihero.dev/skills-triage) can supply the initial report and evidence. After a fix, invoke [retro](https://aihero.dev/skills-retro) in the same session to identify environment improvements; diagnosis does not invoke it automatically. If the investigation reveals a missing test seam, [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) is possible follow-up work; it does not expand the bug fix automatically. [ask-matt](https://aihero.dev/skills-ask-matt) maps the wider flows.

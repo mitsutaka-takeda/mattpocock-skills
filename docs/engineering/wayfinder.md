@@ -45,16 +45,22 @@ Every ticket carries a `wayfinder:<type>` label, and is either **[HITL](https://
 
 | Type | Mode | Reach for it when | Resolved by |
 | --- | --- | --- | --- |
-| `grilling` | HITL | The default. The question can be settled by talking it through. | [grilling](https://aihero.dev/skills-grilling) plus [domain-modeling](https://aihero.dev/skills-domain-modeling), in a fresh session |
+| `grilling` | HITL | The default. The question can be settled by talking it through. | [grilling](https://aihero.dev/skills-grilling) plus [domain-modeling](https://aihero.dev/skills-domain-modeling), across the needed exchanges in the current conversation |
 | `prototype` | HITL | "How should this look" or "how should this behave": a question talking cannot settle. | [prototype](https://aihero.dev/skills-prototype), with the built artifact linked from the ticket as an asset |
 | `research` | AFK | A fact outside the working directory is blocking a decision. | The current agent uses [research](https://aihero.dev/skills-research) on ready tickets one at a time; parallel researchers require your explicit request |
 | `task` | Either | Nothing to decide, but manual work blocks a decision, such as provisioning access, signing up for a service, or moving data so its shape can be seen. | The agent alone where it can, otherwise a precise checklist for the human |
 
 `task` is the only type that *does* rather than decides, and it earns its place by unblocking a decision, never by delivering a piece of the destination. This is the type that goes wrong most often in practice: agents interpret it as an implementation step and start writing product code inside the map.
 
-Research is the only exception to *one ticket per session*.
+Tickets are worked one at a time, with several ready tickets able to resolve in the same conversation. Charting the map and closing a ticket lead into the next ready question or investigation. A reply that settles only part of a question leaves the ticket open and leads to the remaining actionable questions.
 
 ## Common questions
+
+**Does it stop after one answer or one ticket?**
+No. The ticket is the unit of work, not a session quota. After recording a decision, wayfinder refreshes the frontier and continues with the next ready ticket. A request limited to charting or one named ticket keeps that narrower scope.
+
+**It says there are unanswered decisions but asks me nothing. What should happen?**
+It should ask concrete questions that you can answer now, with enough context and a recommended choice where useful. Facts available in the repository or other sources are the agent's work. While your decision is pending, independent authorized work can continue; once you reply, the conversation resumes from that answer. A decision awaiting your judgment stays open.
 
 **How is this different from `/grill-with-docs`? Which should I start with?**
 Session count, not project size. `/grill-with-docs` is single-session planning; wayfinder is multi-session planning. If you can hold the whole thing in one conversation, grilling is the cheaper and better tool, and wayfinder is genuinely slower and denser for that case. The community shorthand that has settled on it: wayfinder only makes sense if the work doesn't fit into a single session. This is by a distance the most-asked wayfinder question, and it keeps being asked because the descriptions do not tell you where your own task sits on that line. You have to judge the session count yourself.
@@ -91,9 +97,10 @@ It is this skill, renamed to `wayfinder` in v1.1 and invoked as `/wayfinder`. "D
 - The destination is written down and agreed before a single ticket exists.
 - Every open ticket reads as a question. Any ticket that reads "build the X" is either mis-typed or belongs downstream of the map.
 - You can look at your tracker and see which tickets are takeable without opening the map, since that is the frontier rendering itself through native blocking.
-- A session resolves one ticket, posts the answer as a resolution comment, closes it, and leaves one line on the map's *Decisions so far*. Then it stops.
+- Each resolved ticket has a resolution comment and one line on the map's *Decisions so far*. The conversation proceeds to the next ready ticket while work remains in scope.
+- Unanswered decisions arrive as actual questions. Your reply settles what it answers and leads to the remaining questions or the next investigation.
 - **Not yet specified** shrinks over time. A patch of fog that graduates into a ticket disappears from that section rather than living in both places.
-- When the opening breadth-first grill turns up no fog at all, the skill stops and tells you the effort is small enough to skip the map.
+- When the opening breadth-first grill turns up no fog at all, the skill skips the map, delivers the planning result, and continues into a next phase you already requested.
 - The session that finishes the map hands you toward a spec, not a pull request.
 
 ## Where it fits

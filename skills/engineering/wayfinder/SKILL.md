@@ -1,6 +1,6 @@
 ---
 name: wayfinder
-description: Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.
+description: Plan a large, uncertain effort as a shared map of decision tickets; keep resolving ready decisions and asking needed questions until the route is clear.
 disable-model-invocation: true
 ---
 
@@ -54,7 +54,7 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 ### Tickets
 
-Each ticket is a **child issue** of the map; the tracker's issue id is its identity. Its body is the question, sized to one focused agent session:
+Each ticket is a **child issue** of the map; the tracker's issue id is its identity. Its body is one focused question, which may take several exchanges to resolve:
 
 ```markdown
 ## Question
@@ -102,18 +102,28 @@ Ruling something out of scope is a scoping act, not a step on the route. When a 
 
 ## Invocation
 
-Two modes. Either way, **never resolve more than one ticket per session**, with the exception of research tickets.
+Two modes, with the same continuation rules. Work one ticket at a time and continue through ready tickets in the current conversation. Charting, one user answer, and one ticket resolution are phase boundaries rather than session limits. Honor an explicitly narrower request, such as charting only or resolving one named ticket.
+
+### Continue the conversation
+
+Reuse settled decisions and existing authorization. Resolve factual gaps from available sources; put decisions that require the human's judgment to the user as concrete questions, with the relevant context and a recommended answer where useful. Use an available user-input tool or ask directly in the reply. A list labelled "unanswered" is a record, not a question: before yielding for an answer, actually ask what is needed.
+
+After a reply, retain the answers it settles, ask about any remaining actionable decisions, and continue independent authorized work while required answers are pending. Leave an unresolved ticket open; a partial reply or a recommendation alone does not resolve it. Resume from the reply without requiring another skill invocation or a request to continue.
+
+After each resolution, refresh the frontier and any newly specifiable fog, then take the next ready ticket. If all tickets are blocked, trace their prerequisites and ask the question or identify the concrete access or external action needed to unblock progress. An empty frontier with open tickets or in-scope fog is not a completed map.
+
+Finish when the requested scope is complete, the user asks to pause, or a concrete prerequisite prevents further progress. When yielding for human input, state the actual question or required action and continue from the answer. A completed map has no unresolved in-scope tickets or fog; transition to further work only within the user's requested scope.
 
 ### Chart the map
 
 User invokes with a loose idea.
 
 1. **Name the destination.** Call the Skill tool twice, for "grilling" and "domain-modeling", to pin down what this map is finding its way to: the spec, decision, or change. The destination fixes the scope, so it's settled first.
-2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** (the way to the destination is already clear, the whole journey small enough for one session), you don't need a map. Stop and ask the user how they'd like to proceed.
+2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** (the way to the destination is already clear), skip the map and deliver the agreed planning result. Continue into a next phase already requested by the user; ask only if its direction needs a decision.
 3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map, then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog: the **Not yet specified** section.
 5. **Resolve ready research tickets.** Work the unblocked, unclaimed `research` tickets one at a time in the current agent using "research". Claim each ticket first, record its findings, and use the resolution steps below to close it and update the map before choosing the next. Keep notes on a `research/<name>` branch with a context pointer from the ticket. When the user explicitly requests parallel research, delegate only independent, claimed tickets and isolate each writing task in its own worktree; reconcile the map updates in the current agent.
-6. Stop: charting is one session's work; it hand-resolves nothing.
+6. **Continue through the map.** Unless the user requested charting only, take the next ready ticket using the workflow below. Ask its actionable questions or perform its authorized investigation in this conversation.
 
 ### Work through the map
 
@@ -121,8 +131,9 @@ User invokes with a map (URL or number). A ticket is **optional**: without one, 
 
 1. Load the **map**: the low-res view, not every ticket body.
 2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it**: assign it to yourself before any work.
-3. Resolve it. **Zoom as needed**: fetch the full body of any related or closed ticket on demand; call the Skill tool for whichever skills the `## Notes` block names. If in doubt, call the Skill tool twice, for "grilling" and "domain-modeling".
-4. Record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
+3. Resolve it through the necessary investigation and question rounds, following **Continue the conversation**. **Zoom as needed**: fetch the full body of any related or closed ticket on demand; call the Skill tool for whichever skills the `## Notes` block names. If in doubt, call the Skill tool twice, for "grilling" and "domain-modeling".
+4. Once the question is settled, record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
 5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals that a ticket (this one or another) sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
+6. Refresh the frontier, accounting for concurrent tracker changes, and repeat from step 2 while ready work remains within the requested scope. Follow the continuation rules when only blocked work or fog remains.
 
 The user may run unblocked tickets in parallel, so expect other sessions to be editing the tracker concurrently.

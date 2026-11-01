@@ -27,7 +27,7 @@ Reuse the relevant file paths, coupling details, dependency category from [DEEPE
 - Common caller: "Optimise for the most common caller: make the default case trivial."
 - Cross-seam dependencies (if applicable): "Design around ports & adapters for cross-seam dependencies."
 
-Use both [SKILL.md](SKILL.md) vocabulary and CONTEXT.md vocabulary consistently across the alternatives. When delegation is explicitly requested, assign each independent alternative to one sub-agent with this context and a distinct constraint. Respect the requested agent count and available capacity; produce any remaining alternatives yourself.
+Use both [SKILL.md](SKILL.md) vocabulary and GLOSSARY.md vocabulary consistently across the alternatives. When delegation is explicitly requested, assign each independent alternative to one sub-agent with this context and a distinct constraint. Respect the requested agent count and available capacity; produce any remaining alternatives yourself.
 
 For each alternative, provide:
 
