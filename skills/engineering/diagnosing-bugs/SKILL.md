@@ -27,7 +27,7 @@ Use a debugger, targeted logs or measurements as appropriate. Change one relevan
 
 ## Fix and verify
 
-When a fix is in scope, make the smallest change that addresses the supported cause. Where a suitable test seam exists, first turn the reproduction into a failing regression test that exercises the actual bug pattern, then verify it passes with the fix. A test at a shallower seam that cannot catch the reported failure is not regression coverage; report that limitation if no suitable seam exists.
+When a fix is in scope, make the smallest change that addresses the supported cause. Where a suitable test seam exists, first turn the reproduction into a failing regression test that exercises the actual bug pattern, then verify it passes with the fix. If you forced the red by mutating code or a fixture, diff against a pristine copy to prove the mutation landed before trusting that failure. A test at a shallower seam that cannot catch the reported failure is not regression coverage; report that limitation if no suitable seam exists.
 
 Check the fix against the original scenario as well as the reduced reproduction, reusing a result when they are the same check. Run affected checks and required repository validation. Expand or repeat verification only when new changes, failures or unresolved concerns justify it.
 

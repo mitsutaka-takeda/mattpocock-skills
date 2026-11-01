@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 You don't remember every skill, so ask.
 
+Before stating what a skill does or recommending a step be skipped, read that skill's SKILL.md: summaries here are for orientation only.
+
 A **flow** is a path through the skills. Most paths run along one **main flow**, and two **on-ramps** merge onto it. Everything else is standalone, or a vocabulary layer that runs underneath.
 
 ## The main flow: idea → ship
@@ -72,6 +74,11 @@ A **phase** is a chunk of work inside a session: the grilling, the implementatio
 - **`/compact`** compresses this context and seeds a fresh session with it. The **default**, at the bottom of the tree rather than the first reach.
 
 Read [PHASE-BOUNDARIES.md](PHASE-BOUNDARIES.md) for the ordered tree: the five questions, the reasoning behind each branch, and why the primary-source cost makes **Continue** the one to rule out first. Make the decision **at** a boundary; mid-phase, continue the work. Delegate only when the user explicitly requests it.
+
+## Long-running work and factory design
+
+- **`/chief-of-staff`** (in progress): advance an agreed long-running objective and maintain shared project memory. Work stays in the current agent by default; delegation and recurring automation require the corresponding user request.
+- **`/software-factory`** (in progress): design the tasks and services that turn tickets, PRs and schedules into code changes. Use it when choosing triggers, runners, coordination and human intervention points; building the design is a separate requested scope.
 
 ## Standalone
 

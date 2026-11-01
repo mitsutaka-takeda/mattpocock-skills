@@ -4,6 +4,8 @@
 
 Research runs in the current agent by default. A background agent is used only when you explicitly request delegation, and that agent completes the research directly without spawning another researcher.
 
+An explicitly requested researcher starts fresh with the scoped question and source pointers instead of inheriting the conversation. Without that request, research stays in the current agent and ends with a cited note.
+
 ## When to reach for it
 
 Type `/research`, or the agent reaches for it when you need a topic investigated, documentation checked or a cited research note.

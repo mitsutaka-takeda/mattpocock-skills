@@ -1,0 +1,5 @@
+interface:
+  display_name: "Chief of Staff"
+  short_description: "Advance long-running work with durable shared memory"
+policy:
+  allow_implicit_invocation: false

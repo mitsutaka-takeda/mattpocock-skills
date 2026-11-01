@@ -1,0 +1,5 @@
+interface:
+  display_name: "Software Factory"
+  short_description: "Design automated tasks, runners and project services"
+policy:
+  allow_implicit_invocation: false

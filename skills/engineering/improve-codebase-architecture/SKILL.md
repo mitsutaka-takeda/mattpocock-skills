@@ -24,7 +24,7 @@ This command is _informed_ by the project's domain model and built on a shared d
 
 Read the project's domain glossary (`GLOSSARY.md`) and any ADRs in the area you're touching first.
 
-Walk the selected area yourself. Delegate exploration only when the user explicitly requests multi-agent work for this task; a delegated explorer performs its scan directly. Explore organically and note where you experience friction:
+Walk the selected area yourself. Delegate exploration only when the user explicitly requests multi-agent work for this task; start a delegated explorer with a fresh context window and a bounded brief and source pointers, rather than forking this conversation. It performs its scan directly. Explore organically and note where you experience friction:
 
 - Where does understanding one concept require bouncing between many small modules?
 - Where are modules **shallow**, with an interface nearly as complex as the implementation?

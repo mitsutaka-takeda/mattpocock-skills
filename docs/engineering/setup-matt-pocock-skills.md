@@ -6,6 +6,8 @@ Those files are the only thing that varies between repos. The skills themselves 
 
 It is a prompt-driven skill, not a deterministic script. It reads your `git remote`, your existing `CLAUDE.md`, your existing `GLOSSARY.md`, proposes what it found, and waits for you to confirm before writing anything.
 
+Setup checks that the selected GitHub or GitLab repository is reachable, creates missing configured triage labels, and can migrate legacy domain-glossary filenames. Updated tracker templates cover issue bodies and labels, parent and blocking links, open-blocker counts, and reliable comments before closing. Updating the skill does not rewrite already-generated tracker files; run setup to refresh them, reusing established choices.
+
 ## When to reach for it
 
 You invoke this by typing `/setup-matt-pocock-skills`; the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) won't reach for it on its own. It is deliberately marked non-invokable, so no other skill can fire it for you.

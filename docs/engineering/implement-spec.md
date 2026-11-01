@@ -4,6 +4,8 @@
 
 The **frontier** contains unfinished tickets whose blockers are already integrated. The agent recomputes it after each ticket, so dependency order drives the build. Parallel [subagents](https://www.aihero.dev/ai-coding-dictionary/subagent) are an optional mode you request explicitly; invoking the skill does not request them.
 
+Explicitly delegated tickets each get a new worker with a fresh brief and a separate worktree. A delegated review-fix task also gets a new worker. Sequential implementation, integration and final review in the current agent remain the default.
+
 ## When to reach for it
 
 You invoke this by typing `/implement-spec`, and the agent won't reach for it on its own.

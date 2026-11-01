@@ -4,6 +4,8 @@
 
 It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh [agent](https://www.aihero.dev/ai-coding-dictionary/agent), which will happily redesign the work while it builds it.
 
+A ticket reference is fetched and its title stated before implementation begins, so an ambiguous reference cannot silently select the wrong work. The implementation loads tdd and code-review explicitly while retaining already-agreed test seams and focused verification.
+
 ## When to reach for it
 
 You invoke this by typing `/implement` yourself: the agent won't reach for it on its own. It ships with `disable-model-invocation: true`, so no other skill can call it either. Wherever [ask-matt](https://aihero.dev/skills-ask-matt) or [to-tickets](https://aihero.dev/skills-to-tickets) says "then `/implement` per ticket", that is an instruction to you, not something the agent will do unprompted.

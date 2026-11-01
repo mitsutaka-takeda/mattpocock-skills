@@ -3,7 +3,7 @@ name: research
 description: "Investigate a scoped question using primary sources and save a cited research note."
 ---
 
-Research in the current agent by default. Delegate only when the user explicitly requests a background agent or multi-agent work for this task. Invoking this skill alone does not request delegation. A delegated researcher follows the steps below directly and does not spawn another agent.
+Research in the current agent by default. Delegate only when the user explicitly requests a background agent or multi-agent work for this task. Invoking this skill alone does not request delegation. Start a delegated researcher with a fresh context window and its scoped question and source pointers, rather than forking this conversation. It follows the steps below directly and does not spawn another agent.
 
 The task:
 
