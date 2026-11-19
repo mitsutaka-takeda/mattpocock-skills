@@ -13,13 +13,9 @@ Bucket `README.md`s and the top-level `README.md` group entries into **User-invo
 
 ## Dependencies between them
 
-Dependencies are expressed as an explicit instruction to **call the Skill tool** with the named skill (`Call the Skill tool with "grilling"`), not deep `../other-skill/FILE.md` cross-references, and not a bare `/skill`-style mention left for the model to interpret. Naming the tool is what gets it fired: most harnesses expose skill invocation as a tool the model calls, and spelling that out gets a higher hit rate than dropping a `/name` into prose and hoping it's read as a command. Dropping the leading `/` also keeps this harness-neutral rather than less: a skill name on its own carries no assumption about which harness's trigger syntax it belongs to. Shared reference docs live inside the skill that owns them; other skills reach that material by calling the Skill tool with it, not by linking across folders.
+Name the model-invoked skill and the job it does at that step, for example, “Read and apply the `tdd` skill at the agreed test seam.” Use the host's skill loader when available. In a file-based host such as Codex, read the installed skill's `SKILL.md` at the path listed for this session and apply it in the current agent. Load supporting files only as directed by that skill. If two skills are needed, name each and apply both.
 
-This is about **operative** instructions: a skill's own steps telling the agent to go run another skill right now. Router prose that just names skills for a human to pick from (`ask-matt`, bucket `README.md`s) isn't invoking anything, so it keeps `/skill`-style names as plain labels.
-
-The Skill tool takes one skill per call. A step that needs two skills is two calls, not one call with two names: say so (`Call the Skill tool twice, for "grilling" and "domain-modeling"`), not "call it with X and Y," which reads as a single call taking both.
-
-This whole convention only holds when the named skill is **model-invoked**. A user-invoked skill can never be reached this way, full stop: per the invariant above, no other skill can call it, including by naming it to the Skill tool. When a step's precondition is a user-invoked skill (e.g. `setup-matt-pocock-skills`), phrase it as an instruction for the human to act on: "tell the user to run `/setup-matt-pocock-skills`", never as a Skill tool call.
+A recommendation in a router or handoff is for the reader to act on. When a dependency is user-invoked, leave the choice with the user, for example, “run `/setup-matt-pocock-skills` to configure the tracker.” A reference to that skill in ticket notes or another skill does not activate it.
 
 ## Passive vs active domain work
 
