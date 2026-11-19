@@ -33,6 +33,11 @@ Once you think in these two loads, most authoring decisions (split or don't, inl
 
 ## Common questions
 
+**How do I make a skill explicit-only in both supported hosts?**
+
+Set `disable-model-invocation: true` in the Claude Code frontmatter and `policy.allow_implicit_invocation: false` in Codex's `agents/openai.yaml`. The user can still select the skill by name.
+
+
 **Where did `/writing-great-skills` go?**
 It is this skill, renamed in v1.1. Practitioners were already pointing it at `AGENTS.md`, docs, specs, tickets and runtime prompts long before the name caught up; structure, leading words and pruning turn out to be the craft of any text an agent reads. There is no alias. Reinstall under the new name.
 

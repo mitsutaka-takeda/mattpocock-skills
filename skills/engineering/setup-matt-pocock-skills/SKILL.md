@@ -21,7 +21,7 @@ This is a prompt-driven skill, not a deterministic script. Explore, present what
 Look at the current repo to understand its starting state. Read whatever exists; don't assume:
 
 - `git remote -v` and `.git/config`: is this a GitHub repo? Which one?
-- `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Is there already an `## Agent skills` section in either?
+- `AGENTS.md` and `CLAUDE.md` at the repo root: which instructions does the target host load? Check for a root override, a shared file, and an existing `## Agent skills` block.
 - `GLOSSARY.md` and `GLOSSARY-MAP.md` at the repo root, and the legacy `CONTEXT.md` / `CONTEXT-MAP.md`. If a legacy file serves as the domain glossary, offer to `git mv` it to its `GLOSSARY` name and rewrite those names in `docs/agents/domain.md`, reusing any migration approval already given. Files serving another purpose keep their names.
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/`: does this skill's prior output already exist?
@@ -66,20 +66,16 @@ Offer **multi-context** (a root `GLOSSARY-MAP.md` pointing to per-context `GLOSS
 
 Show the user a draft of:
 
-- The `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
+- The `## Agent skills` block and the path that will own it (see step 4)
 - The contents of `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, and `docs/agents/triage-labels.md` (the last only when `triage` is installed)
 
 Let them edit before writing.
 
 ### 4. Write
 
-**Pick the file to edit:**
+**Choose the instruction file for the target host.** Use the host the user names, or the current host by default. For Codex start with the active root instructions (normally `AGENTS.md`, or `AGENTS.override.md` when it takes precedence). For Claude Code start with `CLAUDE.md`. Include the selected path in the draft in step 3.
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create; don't pick for them.
-
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa); always edit the one that's already there.
+Inspect existing symlinks and explicit imports or instructions that point to a shared file. If the target host already reads a shared file that owns the block, update that file once and preserve the link. With independent files, edit only the target host's file. If that file is missing, propose creating it in the draft. Ask which host or file to target only when the request and repository leave that unresolved. Confirm the selected target is inside the repository before writing through a link.
 
 If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
 
